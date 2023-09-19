@@ -20,9 +20,6 @@ enum planck_layers { _COLEMAK, _QWERTY, _DVORAK, _LOWER, _RAISE, _FUNCTION, _MOU
 
 enum planck_keycodes { COLEMAK = SAFE_RANGE, QWERTY, DVORAK, PLOVER, BACKLIT, EXT_PLV, ARROW, MACRO_QUOTE, A_CHIQUITA };
 
-#define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
-
 // combos
 const uint16_t PROGMEM enter_combo[] = {KC_COMMA, KC_DOT, COMBO_END};
 const uint16_t PROGMEM esc_combo[] = {KC_W, KC_F, COMBO_END};
@@ -49,10 +46,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] =  LAYOUT_planck_grid(
-    KC_TAB,                 KC_Q,               KC_W,               KC_F,               KC_P,               KC_B,           KC_J,           KC_L,               KC_U,               KC_Y,               KC_SCLN,                KC_BSPC,
-    MT(MOD_LCTL, KC_QUOTE), MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_R), MT(MOD_LSFT, KC_T), KC_G,           KC_M,           MT(MOD_RSFT, KC_N), MT(MOD_RALT, KC_E), MT(MOD_RGUI, KC_I), MT(MOD_RCTL, KC_O),     MACRO_QUOTE,
-    CW_TOGG,                MT(MOD_LSFT, KC_Z), KC_X,               KC_C,               KC_D,               KC_V,           KC_K,           KC_H,               KC_COMMA,           KC_DOT,             MT(MOD_RSFT, KC_SLASH), KC_BSLS,
-    TG(_MOUSE),             KC_TRANSPARENT,     KC_TRANSPARENT,     KC_DELETE,          LOWER,              KC_RSFT,        KC_SPC,         RAISE,              MO(_FUNCTION),     KC_TRANSPARENT,     KC_TRANSPARENT,         KC_TRANSPARENT
+    KC_TAB,                 KC_Q,               KC_W,               KC_F,               KC_P,               KC_B,           KC_J,           KC_L,                KC_U,               KC_Y,               KC_SCLN,                KC_BSPC,
+    MT(MOD_LCTL, KC_QUOTE), MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_R), MT(MOD_LSFT, KC_T), KC_G,           KC_M,           MT(MOD_RSFT, KC_N),  MT(MOD_RALT, KC_E), MT(MOD_RGUI, KC_I), MT(MOD_RCTL, KC_O),     MACRO_QUOTE,
+    CW_TOGG,                MT(MOD_LSFT, KC_Z), KC_X,               KC_C,               KC_D,               KC_V,           KC_K,           KC_H,                KC_COMMA,           KC_DOT,             MT(MOD_RSFT, KC_SLASH), KC_BSLS,
+    TG(_MOUSE),             KC_TRANSPARENT,     KC_TRANSPARENT,     KC_DELETE,          LT(_LOWER, KC_TAB), KC_RSFT,        KC_SPC,         LT(_RAISE, KC_BSPC), MO(_FUNCTION),      KC_TRANSPARENT,     KC_TRANSPARENT,         KC_TRANSPARENT
 ),
 
 /* Qwerty
@@ -70,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_LCTL,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_RSFT, KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LT(_LOWER, KC_TAB),   KC_RSFT, KC_SPC,  LT(_RAISE, KC_BSPC),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Dvorak
@@ -88,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC,
     KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,
     KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT ,
-    BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_RSFT, KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LT(_LOWER, KC_TAB),   KC_RSFT, KC_SPC,  LT(_RAISE, KC_BSPC),   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Lower
