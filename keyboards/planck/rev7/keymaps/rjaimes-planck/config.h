@@ -45,4 +45,4 @@
 // CUSTOM config
 
 #define CAPS_WORD_INVERT_ON_SHIFT
-#define QUICK_TAP_TERM 0
+#define QUICK_TAP_TERM_PER_KEY

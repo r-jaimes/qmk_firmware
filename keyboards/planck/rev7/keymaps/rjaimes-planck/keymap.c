@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] =  LAYOUT_planck_grid(
-    KC_TAB,                 KC_Q,               KC_W,               KC_F,               KC_P,               KC_B,           KC_J,           KC_L,                KC_U,               KC_Y,               KC_SCLN,                KC_BSPC,
+    KC_TRANSPARENT,         KC_Q,               KC_W,               KC_F,               KC_P,               KC_B,           KC_J,           KC_L,                KC_U,               KC_Y,               KC_SCLN,                KC_TRANSPARENT,
     MT(MOD_LCTL, KC_QUOTE), MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_R), MT(MOD_LSFT, KC_T), KC_G,           KC_M,           MT(MOD_RSFT, KC_N),  MT(MOD_RALT, KC_E), MT(MOD_RGUI, KC_I), MT(MOD_RCTL, KC_O),     MACRO_QUOTE,
     CW_TOGG,                MT(MOD_LSFT, KC_Z), KC_X,               KC_C,               KC_D,               KC_V,           KC_K,           KC_H,                KC_COMMA,           KC_DOT,             MT(MOD_RSFT, KC_SLASH), KC_BSLS,
     TG(_MOUSE),             KC_TRANSPARENT,     KC_TRANSPARENT,     KC_DELETE,          LT(_LOWER, KC_TAB), KC_RSFT,        KC_SPC,         LT(_RAISE, KC_BSPC), MO(_FUNCTION),      KC_TRANSPARENT,     KC_TRANSPARENT,         KC_TRANSPARENT
@@ -259,7 +259,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case A_CHIQUITA:
              if (record->event.pressed) {
-                SEND_STRING("ª");
+//                 char a_chi = 0xBB;
+                char a_chi_2 = 166;
+                send_char(a_chi_2);
              }
             return true;
             break;
@@ -344,4 +346,13 @@ bool dip_switch_update_user(uint8_t index, bool active) {
         }
     }
     return true;
+}
+
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(_RAISE, KC_BSPC):
+            return 120;
+        default:
+            return 0;
+    }
 }
