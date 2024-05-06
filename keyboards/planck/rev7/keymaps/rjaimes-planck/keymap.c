@@ -19,6 +19,7 @@
 enum planck_layers { _COLEMAK, _QWERTY, _DVORAK, _LOWER, _RAISE, _FUNCTION, _MOUSE, _PLOVER, _ADJUST };
 
 enum planck_keycodes { COLEMAK = SAFE_RANGE, QWERTY, DVORAK, PLOVER, BACKLIT, EXT_PLV, ARROW, MACRO_QUOTE, A_CHIQUITA };
+enum { TD_ENE_SEMICOLON };
 
 // combos
 const uint16_t PROGMEM enter_combo[] = {KC_COMMA, KC_DOT, COMBO_END};
@@ -36,20 +37,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Colemak DH mod (RS swap)
  * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   F  |   P  |   B  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
+ * |      |   Q  |   W  |   F  |   P  |   B  |   J  |   L  |   U  |   Y  | ;/ñ  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  '   |   A  |   S  |   R  |   T  |   G  |   M  |   N  |   E  |   I  |   O  |  '   |
+ * |  '   |   A  |   R  |   S  |   T  |   G  |   M  |   N  |   E  |   I  |   O  |  '   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |cap_wd|   Z  |   X  |   C  |   D  |   V  |   K  |   H  |   ,  |   .  |   /  |  \   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Mouse |      |      |Delete|Lower |    Space    |Raise |      |      |      |      |
+ * |Mouse |      |      |      |Lower |    Space    |Raise |Delete|      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] =  LAYOUT_planck_grid(
-    KC_TRANSPARENT,         KC_Q,               KC_W,               KC_F,               KC_P,               KC_B,           KC_J,           KC_L,                KC_U,               KC_Y,               KC_SCLN,                KC_TRANSPARENT,
-    MT(MOD_LCTL, KC_QUOTE), MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_S), MT(MOD_LALT, KC_R), MT(MOD_LSFT, KC_T), KC_G,           KC_M,           MT(MOD_RSFT, KC_N),  MT(MOD_RALT, KC_E), MT(MOD_RGUI, KC_I), MT(MOD_RCTL, KC_O),     MACRO_QUOTE,
-    CW_TOGG,                MT(MOD_LSFT, KC_Z), KC_X,               KC_C,               KC_D,               KC_V,           KC_K,           KC_H,                KC_COMMA,           KC_DOT,             MT(MOD_RSFT, KC_SLASH), KC_BSLS,
-    TG(_MOUSE),             KC_TRANSPARENT,     KC_TRANSPARENT,     KC_DELETE,          LT(_LOWER, KC_TAB), KC_RSFT,        KC_SPC,         LT(_RAISE, KC_BSPC), MO(_FUNCTION),      KC_TRANSPARENT,     KC_TRANSPARENT,         KC_TRANSPARENT
+    KC_TRANSPARENT,         KC_Q,               KC_W,               KC_F,               KC_P,               KC_B,           KC_J,           KC_L,                KC_U,                    KC_Y,               TD(TD_ENE_SEMICOLON),                KC_TRANSPARENT,
+    MT(MOD_LCTL, KC_QUOTE), MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_R), MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_T), KC_G,           KC_M,           MT(MOD_RSFT, KC_N),  MT(MOD_RALT, KC_E),      MT(MOD_RGUI, KC_I), MT(MOD_RCTL, KC_O),     MACRO_QUOTE,
+    CW_TOGG,                MT(MOD_LSFT, KC_Z), KC_X,               KC_C,               KC_D,               KC_V,           KC_K,           KC_H,                KC_COMMA,                KC_DOT,             MT(MOD_RSFT, KC_SLASH), KC_BSLS,
+    TG(_MOUSE),             KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     LT(_LOWER, KC_TAB), KC_RSFT,        KC_SPC,         LT(_RAISE, KC_BSPC), LT(_FUNCTION,KC_DELETE), KC_TRANSPARENT,     KC_TRANSPARENT,         KC_TRANSPARENT
 ),
 
 /* Qwerty
@@ -356,3 +357,29 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
             return 0;
     }
 }
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MT(MOD_LSFT, KC_T):
+            return 140;
+        case MT(MOD_RSFT, KC_N):
+            return 140;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
+void ene_semicolon(tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+        case 1:
+            send_char(';');
+            break;
+        default :
+            SEND_STRING(SS_DOWN(X_LEFT_SHIFT)SS_TAP(X_GRAVE)SS_UP(X_LEFT_SHIFT)SS_TAP(X_N));
+            break;
+    }
+}
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_ENE_SEMICOLON] = ACTION_TAP_DANCE_FN(ene_semicolon),
+};
