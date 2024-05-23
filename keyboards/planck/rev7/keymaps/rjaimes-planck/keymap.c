@@ -24,12 +24,10 @@ enum { TD_ENE_SEMICOLON };
 // combos
 const uint16_t PROGMEM enter_combo[] = {KC_COMMA, KC_DOT, COMBO_END};
 const uint16_t PROGMEM esc_combo[] = {KC_W, KC_F, COMBO_END};
-const uint16_t PROGMEM delete_line[] = {KC_Y, KC_SCLN, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(enter_combo, KC_ENT),
     COMBO(esc_combo, KC_ESC),
-    COMBO(delete_line, LCTL(KC_BSPC)),
 };
 
 /* clang-format off */
@@ -47,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] =  LAYOUT_planck_grid(
-    KC_TRANSPARENT,         KC_Q,               KC_W,               KC_F,               KC_P,               KC_B,           KC_J,           KC_L,                KC_U,                    KC_Y,               TD(TD_ENE_SEMICOLON),                KC_TRANSPARENT,
+    KC_TRANSPARENT,         KC_Q,               KC_W,               KC_F,               KC_P,               KC_B,           KC_J,           KC_L,                KC_U,                    KC_Y,               TD(TD_ENE_SEMICOLON),   KC_TRANSPARENT,
     MT(MOD_LCTL, KC_QUOTE), MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_R), MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_T), KC_G,           KC_M,           MT(MOD_RSFT, KC_N),  MT(MOD_RALT, KC_E),      MT(MOD_RGUI, KC_I), MT(MOD_RCTL, KC_O),     MACRO_QUOTE,
     CW_TOGG,                MT(MOD_LSFT, KC_Z), KC_X,               KC_C,               KC_D,               KC_V,           KC_K,           KC_H,                KC_COMMA,                KC_DOT,             MT(MOD_RSFT, KC_SLASH), KC_BSLS,
     TG(_MOUSE),             KC_TRANSPARENT,     KC_TRANSPARENT,     KC_TRANSPARENT,     LT(_LOWER, KC_TAB), KC_RSFT,        KC_SPC,         LT(_RAISE, KC_BSPC), LT(_FUNCTION,KC_DELETE), KC_TRANSPARENT,     KC_TRANSPARENT,         KC_TRANSPARENT
@@ -109,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |      |      |Pg Up |  Up  |Pg Dwn|      |ª_mac |   ª  |  =>  |   |  |   \  |      |
+ * |      |      |Pg Up |  Up  |Pg Dwn|      |ª_win |ª_mac |  =>  |   |  |   \  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Home | Left | Down |Right | End  |      |   -  |   =  |   [  |   ]  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -119,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
-    _______, _______, KC_PGUP, KC_UP,   KC_PGDN,  _______, LALT(KC_9), A_CHIQUITA,             ARROW,                  KC_PIPE,               KC_BSLS,               _______,
+    _______, _______, KC_PGUP, KC_UP,   KC_PGDN,  _______, A_CHIQUITA, LALT(KC_9),             ARROW,                  KC_PIPE,               KC_BSLS,               _______,
     _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END,  _______,    MT(MOD_RSFT, KC_MINUS), MT(MOD_LALT, KC_EQUAL), MT(MOD_LGUI, KC_LBRC), MT(MOD_LCTL, KC_RBRC), _______,
     KC_CAPS, _______, _______, _______, _______,  _______, _______,    KC_UNDS,                KC_PLUS,                KC_LCBR,               KC_RCBR,               KC_CAPS,
     _______, _______, _______, _______, _______,  _______, _______,    _______,                _______,                _______,               _______,               _______
