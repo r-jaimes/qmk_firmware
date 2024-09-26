@@ -33,7 +33,7 @@ combo_t key_combos[] = {
 /* clang-format off */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* Colemak DH mod (RS swap)
+/* Colemak DH mod
  * ,-----------------------------------------------------------------------------------.
  * |      |   Q  |   W  |   F  |   P  |   B  |   J  |   L  |   U  |   Y  | ;/ñ  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -160,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |Reset |Reboot|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+  | SAT- |BRGTH+|BRGTH-|  Del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |MUSmod|Aud on|Audoff|AGnorm|AGswap|Colemak|Qwerty|Dvorak|Plover|      |
+ * |      |EE_CLR|MUSmod|Aud on|Audoff|AGnorm|AGswap|Colemak|Qwerty|Dvorak|Plover|      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|       |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
