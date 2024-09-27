@@ -89,9 +89,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower
  * ,-------------------------------------------------------------------------------------.
- * |   ~  |   !  |   @    |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |      |
+ * |      |   !  |   @    |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |      |
  * |------+------+--------+------+------+------+------+------+------+------+------+------|
- * |   `  |   1  |   2    |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  '   |
+ * |      |   1  |   2    |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  '   |
  * |------+------+--------+------+------+------+------+------+------+------+------+------|
  * | CAPS |      |Previous| Play | Next |      |      | Mute | Vol+ | Vol- |      | CAPS |
  * |------+------+--------+------+------+------+------+------+------+------+------+------|
@@ -99,9 +99,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-------------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_grid(
-    KC_TILD,        KC_EXLM,            KC_AT,               KC_HASH,             KC_DLR,              KC_PERC,        KC_CIRC,        KC_AMPR,            KC_ASTR,            KC_LPRN,            KC_RPRN,            _______,
-    KC_GRAVE,       MT(MOD_LCTL, KC_1), MT(MOD_LGUI, KC_2),  MT(MOD_LALT, KC_3),  MT(MOD_LSFT, KC_4),  KC_5,           KC_6,           MT(MOD_RSFT, KC_7), MT(MOD_LALT, KC_8), MT(MOD_LGUI, KC_9), MT(MOD_LCTL, KC_0), KC_QUOTE,
-    KC_CAPS,        KC_TRANSPARENT,     KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_NEXT_TRACK, KC_TRANSPARENT, KC_TRANSPARENT, KC_AUDIO_MUTE,      KC_AUDIO_VOL_DOWN,  KC_AUDIO_VOL_UP,    KC_TRANSPARENT,     KC_CAPS,
+    _______,        KC_EXLM,            KC_AT,               KC_HASH,             KC_DLR,              KC_PERC,        KC_CIRC,        KC_AMPR,            KC_ASTR,            KC_LPRN,            KC_RPRN,            _______,
+    _______,        MT(MOD_LCTL, KC_1), MT(MOD_LGUI, KC_2),  MT(MOD_LALT, KC_3),  MT(MOD_LSFT, KC_4),  KC_5,           KC_6,           MT(MOD_RSFT, KC_7), MT(MOD_LALT, KC_8), MT(MOD_LGUI, KC_9), MT(MOD_LCTL, KC_0), KC_QUOTE,
+    _______,        KC_TRANSPARENT,     KC_MEDIA_PREV_TRACK, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_NEXT_TRACK, KC_TRANSPARENT, KC_TRANSPARENT, KC_AUDIO_MUTE,      KC_AUDIO_VOL_DOWN,  KC_AUDIO_VOL_UP,    KC_TRANSPARENT,     KC_CAPS,
     _______,        _______,            _______,             _______,             _______,             _______,        _______,        _______,            _______,            _______,            _______,            _______
 ),
 
@@ -109,17 +109,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |      |Pg Up |  Up  |Pg Dwn|      |ª_win |ª_mac |  =>  |   |  |   \  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | Home | Left | Down |Right | End  |      |   -  |   =  |   [  |   ]  |      |
+ * |      | Home | Left | Down |Right | End  |   ~  |   -  |   =  |   [  |   ]  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | CAPS |      |      |      |      |      |      |  _   |   +  |   {  |   }  | CAPS |
+ * | CAPS |      |      |      |      |      |   `  |  _   |   +  |   {  |   }  | CAPS |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid(
     _______, _______, KC_PGUP, KC_UP,   KC_PGDN,  _______, A_CHIQUITA, LALT(KC_9),             ARROW,                  KC_PIPE,               KC_BSLS,               _______,
-    _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END,  _______,    MT(MOD_RSFT, KC_MINUS), MT(MOD_LALT, KC_EQUAL), MT(MOD_LGUI, KC_LBRC), MT(MOD_LCTL, KC_RBRC), _______,
-    KC_CAPS, _______, _______, _______, _______,  _______, _______,    KC_UNDS,                KC_PLUS,                KC_LCBR,               KC_RCBR,               KC_CAPS,
+    _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT, KC_END,  KC_TILD,    MT(MOD_RSFT, KC_MINUS), MT(MOD_LALT, KC_EQUAL), MT(MOD_LGUI, KC_LBRC), MT(MOD_LCTL, KC_RBRC), _______,
+    KC_CAPS, _______, _______, _______, _______,  _______, KC_GRAVE,   KC_UNDS,                KC_PLUS,                KC_LCBR,               KC_RCBR,               KC_CAPS,
     _______, _______, _______, _______, _______,  _______, _______,    _______,                _______,                _______,               _______,               _______
 ),
 
